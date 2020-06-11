@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:300|Roboto&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/fa0348eda9.js"></script>
+    <link rel="stylesheet" href="{{style}}">
+</head>
+     <body style="background-color: #e6ecf0">
+<nav class="fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #3C2970">
+  <a class="navbar-brand" href="/user/posts">BlogApp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      {{#if loggedIn}}
+        <li class="nav-item">
+        <a class="nav-link" href="/user/signout">SignOut</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/user/{{userId}}/dashboard">Dashboard</a>
+        </li>
+        {{else}}
+      <li class="nav-item">
+        <a class="nav-link" href="/user/signup.html">SignUp</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user/signup.html">SignIn</a>
+      </li>
+      {{/if}}
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0" action="/user/posts" method="GET">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
+      <button class="btn my-2 my-sm-0" type="submit" style="background-color: #E5D4ED">Search</button>
+    </form>
+  </div>
+</nav>
+</nav>
+  <div class="container" style="position: relative;top:65px;left:45px;">
+    {{#if success}}
+       <div class="alert alert-success" role="alert">
+        {{success}}
+       </div>
+    {{/if}}
+    {{#if error}}
+       <div class="alert alert-danger" role="alert">
+          {{error}}
+        </div>
+    {{/if}}
+    </div>
+ <div class="container-fluid">
+   {{{body}}}
+ </div>
+
+    {{!-- <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+   <div class="container text-center">
+     <small>Copyrights &copy; Blog App</small>
+   </div>
+ </footer> --}}
+
+    <script src={{script}}></script>
+</body>
+</html>
